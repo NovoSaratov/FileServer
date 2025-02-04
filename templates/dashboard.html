@@ -21,8 +21,15 @@
     </form>
     <ul>
         {% for file in files %}
-            <li><a href="{{ url_for('uploaded_file', filename=file) }}">{{ file }}</a></li>
-        {% endfor %}
+        <li>
+            <div class="file-container">
+                <a href="{{ url_for('uploaded_file', filename=file) }}">{{ file }}</a>
+                <form action="/delete/{{ file }}" method="post" style="display:inline;">
+                    <button type="submit" class="delete-button">Delete</button>
+                </form>
+            </div>
+        </li>
+    {% endfor %}  
     </ul>
     <a href="{{ url_for('logout') }}">Logout</a>
 </body>

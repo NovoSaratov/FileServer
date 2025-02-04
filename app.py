@@ -39,6 +39,18 @@ def dashboard():
     files = os.listdir(UPLOAD_FOLDER)
     return render_template('dashboard.html', files=files)
 
+@app.route('/delete/<filename>', methods=['POST'])
+def delete_file(filename):
+    if 'user' not in session:
+        return redirect(url_for('login'))  # Sørg for at brukeren er logget inn
+    
+    file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+    if os.path.exists(file_path):
+        os.remove(file_path)
+    return redirect(url_for('dashboard'))
+
+
+
 @app.route('/logout')
 def logout():
     session.pop('user', None)
