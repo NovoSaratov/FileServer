@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <style>
         body { 
@@ -10,20 +12,25 @@
             align-items: center; 
             height: 100vh; 
             background-color: #f4f4f4; 
+            margin: 0;
         }
         .container { 
             background: white; 
             padding: 20px; 
             border-radius: 8px; 
+
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            width: 300px; /* Added fixed width to container */
+            width: 90%; 
+            max-width: 350px; 
+            box-sizing: border-box;
         }
         input, button { 
             display: block; 
             width: 100%; 
             margin: 10px 0; 
             padding: 12px; 
-            box-sizing: border-box; /* Added to include padding in width calculation */
+            box-sizing: border-box;
+            font-size: 16px;
         }
         button { 
             background: #007BFF; 
@@ -31,17 +38,30 @@
             border: none; 
             cursor: pointer; 
             font-size: 16px; 
+            
         }
         button:hover { 
             background: #0056b3; 
+
+        @media (max-width: 400px) {
+    .container {padding: 15px;
+    }
+    input, button {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
         }
     </style>
 </head>
 <body>
-    <form method="POST">
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <button type="submit">Login</button>
-    </form>
+    <div class="container">
+        <form method="POST">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+
+    </div>
 </body>
 </html>

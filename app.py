@@ -2,11 +2,11 @@ from flask import Flask, render_template, request, redirect, url_for, session, s
 import os
 from werkzeug.utils import secure_filename
 
-app = Flask(__name__)
+app = Flask(__name__) # For coookie sessions"2  
 app.secret_key = 'ce7a25ddeef9f03f179c4c06c8592d72e2e2d9e48a46485bf7bcefbf0d701306'
 UPLOAD_FOLDER = 'uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['UPLOAD_FOL  DER'] = UPLOAD_FOLDER
 
 # Dummy credentials
 USER_CREDENTIALS = {'admin': 'password'}
