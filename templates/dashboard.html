@@ -1,38 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <style>
-        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4; }
-        .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        input, button { display: block; width: 100%; margin: 10px 0; padding: 10px; }
-        button { background: #28a745; color: white; border: none; cursor: pointer; }
-        button:hover { background: #218838; }
-        .delete-button { background: #dc3545; }
-        .delete-button:hover { background: #c82333; }
-        ul { list-style: none; padding: 0; }
-        li { padding: 8px; background: #eee; margin: 5px 0; border-radius: 4px; }
-        a { text-decoration: none; color: #007BFF; }
+       body {
+
+font-family: Arial, sans-serif;
+padding: 20px;
+background-color: #f4f4f4;
+margin: 0;
+}
+
+.container {
+max-width: 90%;
+width: 600px;
+margin: auto;
+background: white;
+padding: 20px;
+border-radius: 8px;
+box-shadow: 0 0 10px rgba(0,0,0,0.1);
+box-sizing: border-box;
+}
+
+input, button {
+display: block;
+width: 100%;
+margin: 10px 0;
+padding: 12px;
+font-size: 16px;
+box-sizing: border-box;
+}
+
+button {
+background: #28a745;
+color: white;
+border: none;
+cursor: pointer;
+font-size: 16px;
+border-radius: 4px;
+}
+
+button:hover {
+background: #218838;
+}
+
+.delete-button {
+background: #dc3545;
+}
+
+.delete-button:hover {
+background: #c82333;
+}
+ul {
+list-style: none;
+padding: 0;
+}
+
+li {
+
+padding: 8px;
+background: #eee;
+margin: 5px 0;
+border-radius: 4px;
+}
+
+a {
+text-decoration: none;
+color: #007BFF;
+}
+
+@media (max-width: 400px) {
+
+.container {
+    padding: 15px;
+}
+
+input, button {
+    font-size: 14px;
+    padding: 10px;
+}
+}
     </style>
 </head>
 <body>
+    <div class="container">
     <h2>Welcome</h2>
-    <form action="/dashboard" method="post" enctype="multipart/form-data">
-        <input type="file" name="file">
-        <button type="submit">Upload</button>
-    </form>
-    <ul>
-        {% for file in files %}
-        <li>
-            <div class="file-container">
-                <a href="{{ url_for('uploaded_file', filename=file) }}">{{ file }}</a>
-                <form action="/delete/{{ file }}" method="post" style="display:inline;">
-                    <button type="submit" class="delete-button">Delete</button>
-                </form>
-            </div>
-        </li>
-    {% endfor %}  
-    </ul>
-    <a href="{{ url_for('logout') }}">Logout</a>
+        <form action="/dashboard" method="post" enctype="multipart/form-data">
+            <input type="file" name="file">
+            <button type="submit">Upload</button>
+        </form>
+        <ul>
+            {% for file in files %}
+            <li>
+                <div class="file-container">
+                    <a href="{{ url_for('uploaded_file', filename=file) }}">{{ file }}</a>
+                    <form action="/delete/{{ file }}" method="post" style="display:inline;">
+                        <button type="submit" class="delete-button">Delete</button>
+                    </form>
+                </div>
+            </li>
+            {% endfor %}  
+        </ul>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
 </body>
 </html>
