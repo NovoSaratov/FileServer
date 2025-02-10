@@ -13,7 +13,7 @@ USER_CREDENTIALS = {'admin': 'password'}
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
-    if 'user' in session:
+    if 'user' in session:   
         return redirect(url_for('dashboard'))
     
     if request.method == 'POST':
