@@ -13,7 +13,8 @@ USER_CREDENTIALS = {'admin': 'password'}
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
-    if 'user' in session:   
+    error = None
+    if 'user' in session:
         return redirect(url_for('dashboard'))
     
     if request.method == 'POST':
@@ -22,8 +23,10 @@ def login():
         if USER_CREDENTIALS.get(username) == password:
             session['user'] = username
             return redirect(url_for('dashboard'))
+        else:
+            error = "Feil brukernavn eller passord"
     
-    return render_template('login.html')
+    return render_template('login.html', error=error)
 
 @app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
