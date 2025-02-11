@@ -53,6 +53,17 @@ background: #dc3545;
 .delete-button:hover {
 background: #c82333;
 }
+.download-button {
+background: #007bff;
+color: white;
+border: none;
+cursor: pointer;
+font-size: 14px;
+padding: 8px;
+border-radius: 4px;
+margin-left: 1px;
+}
+
 ul {
 list-style: none;
 padding: 0;
@@ -99,6 +110,9 @@ input, button {
                     <form action="/delete/{{ file }}" method="post" style="display:inline;">
                         <button type="submit" class="delete-button">Delete</button>
                     </form>
+                    <a href="{{ url_for('uploaded_file', filename=file) }}" download>
+                        <button type="button" class="download-button">Download</button>
+                    </a>
                 </div>
             </li>
             {% endfor %}  
