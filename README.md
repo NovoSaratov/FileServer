@@ -49,6 +49,6 @@ Must be connected to school network Akademiet-Heltberg for the website to functi
 ## License
 This project is free to use, please copy it as you need :)
 
-##
+## User Guide
 [User Guide](index.md)
 Here is the user guide after the installation 
